@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { AppstoreOutlined } from "@ant-design/icons";
+import {
+  BarsOutlined,
+  ExclamationCircleOutlined,
+  IssuesCloseOutlined,
+} from "@ant-design/icons";
 import { Menu } from "antd";
 
-const Nav = () => {
+const Nav = React.memo(() => {
+  // console.log("Nav");
   const [current, setCurrent] = useState("mail");
   const onClick = (e) => {
     console.log("click ", e);
@@ -18,7 +23,7 @@ const Nav = () => {
       items={items}
     />
   );
-};
+});
 
 export default Nav;
 
@@ -26,17 +31,17 @@ const items = [
   {
     label: <Link to="/">전체</Link>,
     key: "mail",
-    icon: <AppstoreOutlined />,
+    icon: <BarsOutlined />,
   },
   {
     label: <Link to="/todo">할 일</Link>,
     key: "app",
-    icon: <AppstoreOutlined />,
+    icon: <ExclamationCircleOutlined />,
   },
 
   {
     label: <Link to="/dome">완료</Link>,
     key: "alipay",
-    icon: <AppstoreOutlined />,
+    icon: <IssuesCloseOutlined />,
   },
 ];

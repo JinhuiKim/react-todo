@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Card, Checkbox, Button } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-const List = () => {
-  const [checked, setChecked] = useState(false);
+const List = React.memo(({ todo }) => {
+  //   console.log("List");
+  const [checked, setChecked] = useState(todo.completed);
 
   const onChange = (e) => {
     console.log("checked = ", e.target.checked);
@@ -11,9 +12,9 @@ const List = () => {
   };
 
   return (
-    <Card>
+    <Card key={todo.id}>
       <Checkbox checked={checked} onChange={onChange} />
-      <span>할 일</span>
+      <span>{todo.title}</span>
       <Button type="primary" shape="round" icon={<EditOutlined />}>
         수정
       </Button>
@@ -22,5 +23,5 @@ const List = () => {
       </Button>
     </Card>
   );
-};
+});
 export default List;

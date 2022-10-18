@@ -3,7 +3,8 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import { createTodoList } from "../util/api";
 
-const Form = () => {
+const Form = React.memo(() => {
+  //   console.log("Form");
   const [inputValue, setInputValue] = useState("");
 
   const handleChangeInputValue = (e) => {
@@ -34,6 +35,6 @@ const Form = () => {
       />
     </article>
   );
-};
+});
 
 export default Form;

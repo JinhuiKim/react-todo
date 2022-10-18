@@ -8,12 +8,13 @@ const HeaderComponent = styled.header`
 
 const { Title } = Typography;
 
-const Header = () => {
+const Header = React.memo(() => {
+  //   console.log("Header");
   return (
     <HeaderComponent>
       <Title>To Do List</Title>
     </HeaderComponent>
   );
-};
+});
 
 export default Header;

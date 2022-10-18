@@ -1,7 +1,16 @@
 import React from "react";
 
-const Todo = () => {
-  return <section>Todo</section>;
-};
+import Form from "./Form";
+import Lists from "./Lists";
+
+const Todo = React.memo(({ todoList }) => {
+  // console.log("Todo");
+  return (
+    <section>
+      <Form />
+      <Lists todoList={todoList} />
+    </section>
+  );
+});
 
 export default Todo;
