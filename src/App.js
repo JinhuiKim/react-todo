@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "antd/dist/antd.css";
 import { Col, Row } from "antd";
+import styled from "styled-components";
 
 import Header from "./components/Header";
 // import Footer from "./components/Footer";
@@ -23,7 +24,7 @@ const App = () => {
   }, []);
 
   return (
-    <Row>
+    <MainContainer>
       <Col span={24}>
         <Header />
       </Col>
@@ -41,8 +42,12 @@ const App = () => {
         </Col>
       </BrowserRouter>
       {/* <Footer /> */}
-    </Row>
+    </MainContainer>
   );
 };
 
 export default App;
+
+const MainContainer = styled(Row)`
+  padding: 50px;
+`;

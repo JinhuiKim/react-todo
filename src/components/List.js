@@ -30,7 +30,7 @@ const List = React.memo(({ todo, setTodoList }) => {
   const handleClickSaveButton = (e) => {
     patchTodoList(id, { title: inputValue, completed: checked }).then(() => {
       handleClickUpdateButton();
-      setChecked(completed);
+      setChecked(checked);
       setEditedTitle(inputValue);
     });
   };
@@ -48,52 +48,78 @@ const List = React.memo(({ todo, setTodoList }) => {
   };
 
   return (
-    <Card key={id}>
-      <Checkbox checked={checked} onChange={handleChangeCheckBox} />
-      {isEditing ? (
-        <Input
-          placeholder="Basic usage"
-          value={inputValue}
-          onChange={handleChangeInput}
-        />
-      ) : (
-        <TitleSpan checked={checked}>{editedTitle}</TitleSpan>
-      )}
-      {isEditing ? (
-        <Button
-          type="default"
-          shape="round"
-          icon={<SaveOutlined />}
-          onClick={handleClickSaveButton}
-        >
-          저장
-        </Button>
-      ) : (
-        <>
+    <CardCompoenent key={id}>
+      <TitleWapper>
+        <CheckBoxWapper checked={checked} onChange={handleChangeCheckBox} />
+        {isEditing ? (
+          <Input
+            placeholder="Basic usage"
+            value={inputValue}
+            onChange={handleChangeInput}
+          />
+        ) : (
+          <TitleSpan checked={checked}>{editedTitle}</TitleSpan>
+        )}
+      </TitleWapper>
+      <div>
+        {isEditing ? (
           <Button
-            type="primary"
+            type="default"
             shape="round"
-            icon={<EditOutlined />}
-            onClick={handleClickUpdateButton}
+            icon={<SaveOutlined />}
+            onClick={handleClickSaveButton}
           >
-            수정
+            저장
           </Button>
-          <Button
-            type="primary"
-            shape="round"
-            icon={<DeleteOutlined />}
-            danger
-            onClick={handleClickDeleteButton}
-          >
-            삭제
-          </Button>
-        </>
-      )}
-    </Card>
+        ) : (
+          <>
+            <Button
+              type="primary"
+              shape="round"
+              icon={<EditOutlined />}
+              onClick={handleClickUpdateButton}
+            >
+              수정
+            </Button>
+            <DeleteButton
+              type="primary"
+              shape="round"
+              icon={<DeleteOutlined />}
+              danger
+              onClick={handleClickDeleteButton}
+            >
+              삭제
+            </DeleteButton>
+          </>
+        )}
+      </div>
+    </CardCompoenent>
   );
 });
 export default List;
 
+const CardCompoenent = styled.div`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  border: 1px solid #f0f0f0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+`;
+
 const TitleSpan = styled.span`
   text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
+`;
+
+const TitleWapper = styled.div`
+  display: flex;
+`;
+
+const CheckBoxWapper = styled(Checkbox)`
+  margin-right: 15px;
+`;
+
+const DeleteButton = styled(Button)`
+  margin-left: 10px;
 `;

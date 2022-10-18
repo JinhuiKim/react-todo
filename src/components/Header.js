@@ -16,6 +16,5 @@ const Header = React.memo(() => {
 export default Header;
 
 const HeaderComponent = styled.header`
-  margin-top: 20px;
   text-align: center;
 `;
