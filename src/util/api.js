@@ -1,5 +1,7 @@
-export const getTodoLists = (url, data) => {
-  return fetch(url)
+const TODO = "/todo";
+
+export const getTodoLists = (data) => {
+  return fetch(TODO)
     .then((res) => {
       if (!res.ok) {
         throw Error("could not fetch the data for that resource");
@@ -11,8 +13,8 @@ export const getTodoLists = (url, data) => {
     });
 };
 
-export const createTodoList = (url, data) => {
-  return fetch(url, {
+export const createTodoList = (data) => {
+  return fetch(TODO, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

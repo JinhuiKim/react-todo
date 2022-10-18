@@ -16,7 +16,7 @@ const App = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      getTodoLists("/todo").then((data) => {
+      getTodoLists().then((data) => {
         setTodoList(data);
       });
     }, 1000);

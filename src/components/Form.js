@@ -16,7 +16,7 @@ const Form = React.memo(({ setTodoList }) => {
       title: value,
       completed: false,
     };
-    createTodoList("/todo", data).then((data) => {
+    createTodoList(data).then((data) => {
       setTodoList((prev) => [...prev, data]);
       setInputValue("");
     });
