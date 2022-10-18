@@ -33,15 +33,15 @@ const items = [
     key: "mail",
     icon: <BarsOutlined />,
   },
-  {
-    label: <Link to="/todo">할 일</Link>,
-    key: "app",
-    icon: <ExclamationCircleOutlined />,
-  },
+  // {
+  //   label: <Link to="/todo">할 일</Link>,
+  //   key: "app",
+  //   icon: <ExclamationCircleOutlined />,
+  // },
 
-  {
-    label: <Link to="/dome">완료</Link>,
-    key: "alipay",
-    icon: <IssuesCloseOutlined />,
-  },
+  // {
+  //   label: <Link to="/dome">완료</Link>,
+  //   key: "alipay",
+  //   icon: <IssuesCloseOutlined />,
+  // },
 ];
