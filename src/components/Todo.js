@@ -8,7 +8,7 @@ const Todo = React.memo(({ todoList, setTodoList }) => {
   return (
     <section>
       <Form setTodoList={setTodoList} />
-      <Lists todoList={todoList} />
+      <Lists todoList={todoList} setTodoList={setTodoList} />
     </section>
   );
 });
