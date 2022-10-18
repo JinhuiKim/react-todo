@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card, Checkbox, Button } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Card, Checkbox, Button, Input } from "antd";
+import { SaveOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { deleteTodoList, patchTodoList } from "../util/api";
 
@@ -8,16 +8,31 @@ const List = React.memo(({ todo, setTodoList }) => {
   // console.log("List");
   const { id, title, completed } = todo;
   const [checked, setChecked] = useState(completed);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(title);
+  const [inputValue, setinputValue] = useState(editedTitle);
 
-  const handleChangeUpdateButton = (e) => {
+  const handleChangeCheckBox = (e) => {
     const completed = e.target.checked;
+    if (isEditing) {
+      setChecked(completed);
+      return;
+    }
     patchTodoList(id, { completed }).then(() => {
       setChecked(completed);
     });
   };
 
   const handleClickUpdateButton = (e) => {
-    console.log("수정");
+    setIsEditing((prev) => !prev);
+  };
+
+  const handleClickSaveButton = (e) => {
+    patchTodoList(id, { title: inputValue, completed: checked }).then(() => {
+      handleClickUpdateButton();
+      setChecked(completed);
+      setEditedTitle(inputValue);
+    });
   };
 
   const handleClickDeleteButton = (e) => {
@@ -28,27 +43,52 @@ const List = React.memo(({ todo, setTodoList }) => {
     });
   };
 
+  const handleChangeInput = (e) => {
+    setinputValue(e.target.value);
+  };
+
   return (
     <Card key={id}>
-      <Checkbox checked={checked} onChange={handleChangeUpdateButton} />
-      <TitleSpan checked={checked}>{title}</TitleSpan>
-      <Button
-        type="primary"
-        shape="round"
-        icon={<EditOutlined />}
-        onClick={handleClickUpdateButton}
-      >
-        수정
-      </Button>
-      <Button
-        type="primary"
-        shape="round"
-        icon={<DeleteOutlined />}
-        danger
-        onClick={handleClickDeleteButton}
-      >
-        삭제
-      </Button>
+      <Checkbox checked={checked} onChange={handleChangeCheckBox} />
+      {isEditing ? (
+        <Input
+          placeholder="Basic usage"
+          value={inputValue}
+          onChange={handleChangeInput}
+        />
+      ) : (
+        <TitleSpan checked={checked}>{editedTitle}</TitleSpan>
+      )}
+      {isEditing ? (
+        <Button
+          type="default"
+          shape="round"
+          icon={<SaveOutlined />}
+          onClick={handleClickSaveButton}
+        >
+          저장
+        </Button>
+      ) : (
+        <>
+          <Button
+            type="primary"
+            shape="round"
+            icon={<EditOutlined />}
+            onClick={handleClickUpdateButton}
+          >
+            수정
+          </Button>
+          <Button
+            type="primary"
+            shape="round"
+            icon={<DeleteOutlined />}
+            danger
+            onClick={handleClickDeleteButton}
+          >
+            삭제
+          </Button>
+        </>
+      )}
     </Card>
   );
 });
