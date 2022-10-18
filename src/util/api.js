@@ -44,3 +44,20 @@ export const deleteTodoList = (id) => {
       console.error("Error", error);
     });
 };
+
+export const patchTodoList = (id, data) => {
+  return fetch(`${TODO}/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "Application/json" },
+    body: JSON.stringify(data),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw Error("could not fetch the data for that resource");
+      }
+      return res.json();
+    })
+    .catch((error) => {
+      console.error("Error", error);
+    });
+};

@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { Card, Checkbox, Button } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { deleteTodoList } from "../util/api";
+import styled from "styled-components";
+import { deleteTodoList, patchTodoList } from "../util/api";
 
 const List = React.memo(({ todo, setTodoList }) => {
+  // console.log("List");
   const { id, title, completed } = todo;
-  //   console.log("List");
   const [checked, setChecked] = useState(completed);
 
-  const onChange = (e) => {
-    setChecked(e.target.checked);
+  const handleChangeUpdateButton = (e) => {
+    const completed = e.target.checked;
+    patchTodoList(id, { completed }).then(() => {
+      setChecked(completed);
+    });
   };
 
   const handleClickUpdateButton = (e) => {
@@ -26,8 +30,8 @@ const List = React.memo(({ todo, setTodoList }) => {
 
   return (
     <Card key={id}>
-      <Checkbox checked={checked} onChange={onChange} />
-      <span>{title}</span>
+      <Checkbox checked={checked} onChange={handleChangeUpdateButton} />
+      <TitleSpan checked={checked}>{title}</TitleSpan>
       <Button
         type="primary"
         shape="round"
@@ -49,3 +53,7 @@ const List = React.memo(({ todo, setTodoList }) => {
   );
 });
 export default List;
+
+const TitleSpan = styled.span`
+  text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
+`;
