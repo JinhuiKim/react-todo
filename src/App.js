@@ -4,7 +4,7 @@ import { Col, Row } from "antd";
 import "antd/dist/antd.css";
 
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import Todo from "./components/Todo";
 
@@ -44,11 +44,11 @@ const App = () => {
           </Routes>
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Col span={24}>
           <Footer />
         </Col>
-      </Row>
+      </Row> */}
     </BrowserRouter>
   );
 };
