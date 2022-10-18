@@ -1,3 +1,59 @@
 {
-  "todo": []
+  "todo": [
+    {
+      "title": "figma 프로토타입",
+      "completed": false,
+      "id": 1
+    },
+    {
+      "title": "Storybook",
+      "completed": false,
+      "id": 2
+    },
+    {
+      "title": "Feat: 상태관리 툴 사용",
+      "completed": false,
+      "id": 3
+    },
+    {
+      "title": "CRUD 동작",
+      "completed": true,
+      "id": 4
+    },
+    {
+      "title": "배포",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "title": "Feat: 커스텀 훅",
+      "completed": false,
+      "id": 6
+    },
+    {
+      "title": "Feat: input maxLength check",
+      "completed": false,
+      "id": 7
+    },
+    {
+      "title": "Style: css 적용",
+      "completed": true,
+      "id": 8
+    },
+    {
+      "title": "proxy",
+      "completed": true,
+      "id": 9
+    },
+    {
+      "title": "json-server",
+      "completed": true,
+      "id": 10
+    },
+    {
+      "title": "antd",
+      "completed": false,
+      "id": 11
+    }
+  ]
 }
