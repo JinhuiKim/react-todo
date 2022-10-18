@@ -3,11 +3,11 @@ import React from "react";
 import Form from "./Form";
 import Lists from "./Lists";
 
-const Todo = React.memo(({ todoList }) => {
+const Todo = React.memo(({ todoList, setTodoList }) => {
   // console.log("Todo");
   return (
     <section>
-      <Form />
+      <Form setTodoList={setTodoList} />
       <Lists todoList={todoList} />
     </section>
   );

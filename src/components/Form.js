@@ -3,7 +3,7 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import { createTodoList } from "../util/api";
 
-const Form = React.memo(() => {
+const Form = React.memo(({ setTodoList }) => {
   //   console.log("Form");
   const [inputValue, setInputValue] = useState("");
 
@@ -16,7 +16,8 @@ const Form = React.memo(() => {
       title: value,
       completed: false,
     };
-    createTodoList("/todo", data).then(() => {
+    createTodoList("/todo", data).then((data) => {
+      setTodoList((prev) => [...prev, data]);
       setInputValue("");
     });
   };

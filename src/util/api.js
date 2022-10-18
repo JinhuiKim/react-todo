@@ -17,8 +17,8 @@ export const createTodoList = (url, data) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   })
-    .then(() => {
-      // window.location.href = BASE_URL;
+    .then((res) => {
+      return res.json();
     })
     .catch((error) => {
       console.error("Error", error);

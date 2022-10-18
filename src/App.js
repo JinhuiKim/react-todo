@@ -35,7 +35,10 @@ const App = () => {
         </Col>
         <Col span={24}>
           <Routes>
-            <Route path="/" element={<Todo todoList={todoList} />} />
+            <Route
+              path="/"
+              element={<Todo todoList={todoList} setTodoList={setTodoList} />}
+            />
             <Route path="/todo" element={<Todo />} />
             <Route path="/dome" element={<Todo />} />
           </Routes>
