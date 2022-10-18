@@ -2,10 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Typography } from "antd";
 
-const HeaderComponent = styled.header`
-  text-align: center;
-`;
-
 const { Title } = Typography;
 
 const Header = React.memo(() => {
@@ -18,3 +14,8 @@ const Header = React.memo(() => {
 });
 
 export default Header;
+
+const HeaderComponent = styled.header`
+  margin-top: 20px;
+  text-align: center;
+`;

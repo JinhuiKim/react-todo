@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   BarsOutlined,
-  ExclamationCircleOutlined,
-  IssuesCloseOutlined,
+  // ExclamationCircleOutlined,
+  // IssuesCloseOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 

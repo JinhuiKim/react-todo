@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Col, Row } from "antd";
 import "antd/dist/antd.css";
+import { Col, Row } from "antd";
 
 import Header from "./components/Header";
 // import Footer from "./components/Footer";
@@ -15,25 +15,21 @@ const App = () => {
   const [todoList, setTodoList] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      getTodoLists().then((data) => {
-        setTodoList(data);
-      });
-    }, 1000);
+    // setTimeout(() => {
+    getTodoLists().then((data) => {
+      setTodoList(data);
+    });
+    // }, 1000);
   }, []);
 
   return (
-    <BrowserRouter>
-      <Row>
-        <Col span={24}>
-          <Header />
-        </Col>
-      </Row>
-      <Row>
-        <Col span={24}>
+    <Row>
+      <Col span={24}>
+        <Header />
+      </Col>
+      <BrowserRouter>
+        <Col span={16} offset={4}>
           <Nav />
-        </Col>
-        <Col span={24}>
           <Routes>
             <Route
               path="/"
@@ -43,13 +39,9 @@ const App = () => {
             <Route path="/dome" element={<Todo />} /> */}
           </Routes>
         </Col>
-      </Row>
-      {/* <Row>
-        <Col span={24}>
-          <Footer />
-        </Col>
-      </Row> */}
-    </BrowserRouter>
+      </BrowserRouter>
+      {/* <Footer /> */}
+    </Row>
   );
 };
 
